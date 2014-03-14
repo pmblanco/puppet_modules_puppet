@@ -9,17 +9,11 @@ class puppet::repo::ubuntu {
     }
   }
   
-  apt::key { 'puppetlabs':
-    key        => '4BD6EC30',
-    key_server => 'pgp.mit.edu',
-  }
-
-  apt::source { 'puppetlabs-repo':
-    location     => "$puppet::params::puppet_source_repo_url",
-    release      => "$ubuntu_release",
-    repos        => "$puppet::params::puppet_source_repos",
-	key          => "$puppet::params::puppet_source_repo_key",
-	key_server   => "pgp.mit.edu",
+  apt::source { 'puppetlabs':
+    location   => "$puppet::params::puppet_source_repo_url",
+    repos      => "$puppet::params::puppet_source_repos",
+    key        => "$puppet::params::puppet_source_repo_key",
+    key_server => "$puppet::params::puppet_source_repo_key_server",
   }
 
 }

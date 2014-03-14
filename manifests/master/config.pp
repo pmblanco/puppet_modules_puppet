@@ -1,5 +1,9 @@
-class puppet::master::config {
+class puppet::master::config (
+  $puppet_master_modulepath    = $puppet::params::puppet_master_modulepath
+){
 
+  include puppet::configmain
+  
   if ! defined(Concat['/etc/puppet/puppet.conf']) {
     concat { '/etc/puppet/puppet.conf':
       owner   => 'root',
@@ -11,8 +15,8 @@ class puppet::master::config {
   
   concat::fragment { 'puppet_conf_master':
     target  => '/etc/puppet/puppet.conf',
-	content => "[master]",
-	order   => '20',
+	content => template("${module_name}/puppet_master.conf.erb"),
+	order   => '30',
   }
 
 }
