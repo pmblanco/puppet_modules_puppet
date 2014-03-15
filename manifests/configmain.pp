@@ -1,8 +1,9 @@
 class puppet::configmain (
   $masterserver = undef,
-  $certname = undef,
-  $rundir = undef,
-  $vardir = undef,
+  $certname     = undef,
+  $rundir       = undef,
+  $vardir       = undef,
+  $ssldir       = undef,
 ){
 
   if defined(Package["$puppet::params::puppet_agent_package"]) {

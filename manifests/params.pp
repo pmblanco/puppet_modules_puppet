@@ -1,7 +1,7 @@
 class puppet::params {
-  
+
   case $::operatingsystem {
-  
+
     'Ubuntu': {
 	  $puppet_source_repo_url        = 'http://apt.puppetlabs.com'
 	  $puppet_source_repo_key        = '4BD6EC30'
@@ -10,15 +10,17 @@ class puppet::params {
 	  $puppet_master_package         = 'puppetmaster'
 	  $puppet_agent_package          = 'puppet'
 	}
-	
+
 	default: {
 	  fail ("$::operatingsystem $::operatingsystemversion is not supported")
 	}
 
   }
-  
+
   $puppet_master_modulepath        = '/etc/puppet/modules:/usr/share/puppet/modules'
   $puppet_master_service_name      = 'puppetmaster'
   $puppet_master_service_status    = 'running'
-  
+  $puppet_agent_service_name       = 'puppet'
+  $puppet_agent_service_status     = 'running'
+
 }
