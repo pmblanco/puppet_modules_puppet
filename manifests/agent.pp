@@ -2,6 +2,7 @@ class puppet::agent (
   $masterserver  = undef,
   $report        = undef,
   $pluginsync    = undef,
+  $environment   = undef,
   $certname      = undef
 ) inherits puppet::params {
 

@@ -3,6 +3,7 @@ class puppet::agent::config (
   $report       = undef,
   $pluginsync   = undef,
   $certname     = undef,
+  $environment  = undef,
 ){
 
 
