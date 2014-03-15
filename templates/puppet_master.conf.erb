@@ -1,3 +1,8 @@
 [master]
-  modulepath = <%= @puppet_master_modulepath -%>
-  
+  modulepath    = <%= @puppet_master_modulepath %>
+<% if @reports -%>
+  reports       = <%= @reports %>
+<% end -%>
+<% if @dns_alt_names -%>
+  dns_alt_names = <%= @dns_alt_names %>
+<% end -%>

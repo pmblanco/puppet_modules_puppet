@@ -1,4 +1,9 @@
-class puppet::agent::config {
+class puppet::agent::config (
+  $masterserver = undef,
+  $report       = undef,
+  $pluginsync   = undef,
+  $certname     = undef,
+){
 
 
   if ! defined(Concat['/etc/puppet/puppet.conf']) {

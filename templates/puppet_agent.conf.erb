@@ -1,4 +1,13 @@
 [agent]
-<% if @puppet_master_server %>
-  server = <%= @puppet_master_server -%>
-<% end %>
+<% if @masterserver -%>
+  server        = <%= @masterserver %>
+<% end -%>
+<% if @report -%>
+  report        = <%= @report %>
+<% end -%>
+<% if @pluginsync -%>
+  pluginsync    = <%= @pluginsync %>
+<% end -%>
+<% if @certname -%>
+  certname      = <%= @certname %>
+<% end -%>

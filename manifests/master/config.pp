@@ -1,8 +1,9 @@
 class puppet::master::config (
-  $puppet_master_modulepath    = $puppet::params::puppet_master_modulepath
+  $modulepath    = undef,
+  $reports       = undef,
+  $dns_alt_names = undef,
+  
 ){
-
-  include puppet::configmain
   
   if ! defined(Concat['/etc/puppet/puppet.conf']) {
     concat { '/etc/puppet/puppet.conf':
