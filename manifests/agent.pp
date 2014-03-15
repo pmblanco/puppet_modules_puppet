@@ -14,6 +14,7 @@ class puppet::agent (
 	report        => $report,
 	pluginsync    => $pluginsync,
 	certname      => $certname,
+	environment   => $environment,
   }
   
 }
