@@ -1,10 +1,11 @@
 class puppet::master::config (
-  $manifestdir   = undef,
-  $manifest      = undef,
-  $modulepath    = undef,
-  $reports       = undef,
-  $dns_alt_names = undef,
+  $manifestdir    = undef,
+  $manifest       = undef,
+  $modulepath     = undef,
+  $reports        = undef,
+  $dns_alt_names  = undef,
 ){
+
   
   if ! defined(Concat['/etc/puppet/puppet.conf']) {
     concat { '/etc/puppet/puppet.conf':
@@ -19,6 +20,7 @@ class puppet::master::config (
     target  => '/etc/puppet/puppet.conf',
 	content => template("${module_name}/puppet_master.conf.erb"),
 	order   => '30',
+	notify  => Service[$puppet::params::puppet_master_service_name],
   }
 
 }

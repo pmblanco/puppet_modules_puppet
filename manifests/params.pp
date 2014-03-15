@@ -18,5 +18,7 @@ class puppet::params {
   }
   
   $puppet_master_modulepath        = '/etc/puppet/modules:/usr/share/puppet/modules'
+  $puppet_master_service_name      = 'puppetmaster'
+  $puppet_master_service_status    = 'running'
   
 }
