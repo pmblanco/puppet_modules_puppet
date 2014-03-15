@@ -2,6 +2,9 @@
 <% if @masterserver -%>
   server        = <%= @masterserver %>
 <% end -%>
+<% if @environment -%>
+  environment   = <%= @environment %>
+<% end -%>
 <% if @report -%>
   report        = <%= @report %>
 <% end -%>
