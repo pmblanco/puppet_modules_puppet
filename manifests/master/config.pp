@@ -1,8 +1,9 @@
 class puppet::master::config (
+  $manifestdir   = undef,
+  $manifest      = undef,
   $modulepath    = undef,
   $reports       = undef,
   $dns_alt_names = undef,
-  
 ){
   
   if ! defined(Concat['/etc/puppet/puppet.conf']) {

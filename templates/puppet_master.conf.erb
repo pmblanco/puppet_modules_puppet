@@ -1,4 +1,10 @@
 [master]
+<% if @manifestdir -%>
+  manifestdir       = <%= @manifestdir %>
+<% end -%>
+<% if @manifest -%>
+  manifest = <%= @manifest %>
+<% end -%>
   modulepath    = <%= @puppet_master_modulepath %>
 <% if @reports -%>
   reports       = <%= @reports %>
