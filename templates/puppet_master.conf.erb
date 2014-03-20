@@ -1,0 +1,14 @@
+[master]
+<% if @manifestdir -%>
+  manifestdir   = <%= @manifestdir %>
+<% end -%>
+<% if @manifest -%>
+  manifest      = <%= @manifest %>
+<% end -%>
+  modulepath    = <%= @modulepath %>
+<% if @reports -%>
+  reports       = <%= @reports %>
+<% end -%>
+<% if @dns_alt_names -%>
+  dns_alt_names = <%= @dns_alt_names %>
+<% end -%>
