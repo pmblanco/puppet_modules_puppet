@@ -1,10 +1,10 @@
 class puppet::master (
-  $manifestdir   = undef,
-  $manifest      = undef,
-  $modulepath    = $puppet::params::puppet_master_modulepath,
-  $reports       = undef,
-  $dns_alt_names = undef,
-  $service_status = $puppet::params::puppet_master_service_status
+  $manifestdir    = undef,
+  $manifest       = undef,
+  $modulepath     = $puppet::params::puppet_master_modulepath,
+  $reports        = undef,
+  $dns_alt_names  = undef,
+  $autosign       = undef,
 ) inherits puppet::params {
 
   anchor { 'puppet::master::begin':
@@ -21,6 +21,7 @@ class puppet::master (
     modulepath     => $modulepath,
 	reports        => $reports,
 	dns_alt_names  => $dns_alt_names,
+	autosign       => $autosign,
 	require        => Class['puppet::master::install'],
   }
 

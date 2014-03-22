@@ -4,6 +4,7 @@ class puppet::master::config (
   $modulepath     = undef,
   $reports        = undef,
   $dns_alt_names  = undef,
+  $autosign       = undef,
 ){
   
   include puppet::puppetconf
@@ -14,5 +15,18 @@ class puppet::master::config (
 	order   => '30',
 	notify  => Service[$puppet::params::puppet_master_service_name],
   }
-
+ 
+  # Configuración del fichero autosign
+  if is_array($autosign) {
+    file { 'puppet-autosign-file':
+      ensure    => file,
+	  path      => '/etc/puppet/autosign.conf',
+	  owner     => 'root',
+	  group     => 'root',
+	  mode      => 0644,
+	  content   => join($autosign,"\n"),
+      notify  => Service[$puppet::params::puppet_master_service_name],
+	}
+  }
+  
 }
