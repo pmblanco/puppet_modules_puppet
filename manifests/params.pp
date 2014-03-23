@@ -11,6 +11,7 @@ class puppet::params {
 	  $puppet_agent_package          = 'puppet'
 	  $puppet_db_package             = 'puppetdb'
 	  $puppet_db_terminus_package    = 'puppetdb-terminus'
+	  $puppet_db_config_database_ini = '/etc/puppetdb/conf.d/database.ini'
 	}
 
 	default: {
