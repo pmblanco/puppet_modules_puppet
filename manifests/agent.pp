@@ -16,12 +16,13 @@ class puppet::agent (
   }
   
   class {'puppet::agent::config':
-    masterserver  => $masterserver,
-	report        => $report,
-	pluginsync    => $pluginsync,
-	certname      => $certname,
-	environment   => $environment,
-	require       => Class['puppet::agent::install'],
+    masterserver   => $masterserver,
+	report         => $report,
+	pluginsync     => $pluginsync,
+	certname       => $certname,
+	environment    => $environment,
+	service_status => $service_status,
+	require        => Class['puppet::agent::install'],
   }
   
   class {'puppet::agent::service':
