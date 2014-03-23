@@ -7,13 +7,10 @@ class puppet::agent::config (
   $service_status,
 ){
 
-  include puppet::puppetconf
-
   concat::fragment { 'puppet_conf_agent':
     target  => '/etc/puppet/puppet.conf',
 	content => template("${module_name}/puppet_agent.conf.erb"),
 	order   => '20',
-	notify  => Service[$puppet::params::puppet_agent_service_name],
   }
 
   # Anadimos casos especiales para cada sistema operativo
