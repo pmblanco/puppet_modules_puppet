@@ -21,12 +21,22 @@ class puppet::params {
 
   }
 
+  # Configuraciones de puppet master
   $puppet_master_modulepath        = '/etc/puppet/modules:/usr/share/puppet/modules'
   $puppet_master_service_name      = 'puppetmaster'
   $puppet_master_service_status    = 'running'
+  
+  # Configuraciones de puppet agent
   $puppet_agent_service_name       = 'puppet'
   $puppet_agent_service_status     = 'running'
+  
+  # Configuraciones de puppetdb
   $puppet_db_protocol              = 'hsqldb'
   $puppet_db_name                  = 'file:/var/lib/puppetdb/db/db;hsqldb.tx=mvcc;sql.syntax_pgs=true'
+  
+  # Configuraciones de puppetmaster de conexion a puppetdb
+  $puppet_db_masterconf_server     = undef
+  $puppet_db_masterconf_port       = 8081
+  $puppet_db_masterconf_soft       = false
 
 }
