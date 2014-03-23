@@ -9,6 +9,10 @@ class puppet::params {
 	  $puppet_source_repos           = 'main dependencies'
 	  $puppet_master_package         = 'puppetmaster'
 	  $puppet_agent_package          = 'puppet'
+	  $puppet_db_package             = 'puppetdb'
+	  $puppet_db_terminus_package    = 'puppetdb-terminus'
+	  $puppet_db_config_database_ini = '/etc/puppetdb/conf.d/database.ini'
+	  $puppet_db_service             = 'puppetdb'
 	}
 
 	default: {
@@ -22,5 +26,7 @@ class puppet::params {
   $puppet_master_service_status    = 'running'
   $puppet_agent_service_name       = 'puppet'
   $puppet_agent_service_status     = 'running'
+  $puppet_db_protocol              = 'hsqldb'
+  $puppet_db_name                  = 'file:/var/lib/puppetdb/db/db;hsqldb.tx=mvcc;sql.syntax_pgs=true'
 
 }
