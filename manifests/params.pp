@@ -12,6 +12,7 @@ class puppet::params {
 	  $puppet_db_package             = 'puppetdb'
 	  $puppet_db_terminus_package    = 'puppetdb-terminus'
 	  $puppet_db_config_database_ini = '/etc/puppetdb/conf.d/database.ini'
+  	  $puppet_db_config_jetty_ini    = '/etc/puppetdb/conf.d/jetty.ini'
 	  $puppet_db_service             = 'puppetdb'
 	}
 
@@ -33,6 +34,13 @@ class puppet::params {
   # Configuraciones de puppetdb
   $puppet_db_protocol              = 'hsqldb'
   $puppet_db_name                  = 'file:/var/lib/puppetdb/db/db;hsqldb.tx=mvcc;sql.syntax_pgs=true'
+  $puppet_db_jetty_host            = '0.0.0.0'
+  $puppet_db_jetty_port            = '8080'
+  $puppet_db_jetty_ssl_host        = '0.0.0.0'
+  $puppet_db_jetty_ssl_port        = '8081'
+  $puppet_db_jetty_cert_file       = "/var/lib/puppet/ssl/certs/${::fqdn}.pem"
+  $puppet_db_jetty_key_file        = "/var/lib/puppet/ssl/private_keys/${::fqdn}.pem"
+  $puppet_db_jetty_ca_file         = "/var/lib/puppet/ssl/certs/ca.pem"
   
   # Configuraciones de puppetmaster de conexion a puppetdb
   $puppet_db_masterconf_server     = undef

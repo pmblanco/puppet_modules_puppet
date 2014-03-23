@@ -1,0 +1,26 @@
+[jetty]
+# Hostname or IP address to listen for clear-text HTTP.  Default is localhost
+host = <%= @jetty_host %>
+
+# Port to listen on for clear-text HTTP.
+port = <%= @jetty_port %>
+
+
+# The following are SSL specific settings. They can be configured
+# automatically with the tool `puppetdb ssl-setup`, which is normally
+# ran during package installation.
+
+# The host or IP address to listen on for HTTPS connections
+ssl-host = <%= @jetty_ssl_host %>
+
+# The port to listen on for HTTPS connections
+ssl-port = <%= @jetty_ssl_port %>
+
+# Private key path
+ssl-key = /etc/puppetdb/ssl/puppetdb.key
+
+# Public certificate path
+ssl-cert = /etc/puppetdb/ssl/puppetdb.crt
+
+# Certificate authority path
+ssl-ca-cert = /etc/puppetdb/ssl/ca.crt
