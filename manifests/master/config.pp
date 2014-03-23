@@ -40,7 +40,8 @@ class puppet::master::config (
 	  owner     => 'root',
 	  group     => 'root',
 	  mode      => 0644,
-	  content   => templapte("$module_name/puppet_puppetdb.conf.erb"),
+	  content   => template("$module_name/puppet_puppetdb.conf.erb"),
+      notify    => Service[$puppet::params::puppet_master_service_name],
 	} 
   }
   
