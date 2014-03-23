@@ -1,6 +1,6 @@
 class puppet::db::install {
 
-  package { $puppet::params::puppet_db_pacakge:
+  package { $puppet::params::puppet_db_package:
     ensure  => installed,
   }
   

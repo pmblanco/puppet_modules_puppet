@@ -7,7 +7,7 @@ class puppet::db::config (
     'hsqldb': {
 	  $db_driver = 'org.hsqldb.jdbcDriver'
 	}
-	'postgresql: {
+	'postgresql': {
 	  $db_driver = 'org.postgresql.Driver'
 	}
 	default: {
@@ -17,12 +17,13 @@ class puppet::db::config (
   
   file { 'puppetdb-config-database-ini':
     ensure    => file,
-	path      => $puppet_db_config_database_ini,
+	path      => $puppet::params::puppet_db_config_database_ini,
 	owner     => 'puppetdb',
 	group     => 'puppetdb',
 	mode      => 0640,
-	content   => template(),
-	require   => Package[$puppet::params::puppet_db_pacakge],
+	content   => template("$module_name/db/database.ini.erb"),
+	require   => Package[$puppet::params::puppet_db_package],
+	notify    => Service[$puppet::params::puppet_db_service],
   }
 
 }
