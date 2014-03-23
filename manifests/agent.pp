@@ -4,17 +4,33 @@ class puppet::agent (
   $pluginsync     = undef,
   $environment    = undef,
   $certname       = undef,
-  $service_status = $puppet::params::puppet_agent_service_status
+  $service_status = $puppet::params::puppet_agent_service_status,
+  $certname       = undef,
+  $rundir         = undef,
+  $vardir         = undef,
+  $ssldir         = undef,
 ) inherits puppet::params {
 
-  anchor { 'puppet::agent::begin':
-    before        => Class['puppet::agent::install'],
-  }
-
-  class {'puppet::agent::install':
-    require       => Anchor['puppet::agent::begin'],
+  concat { '/etc/puppet/puppet.conf':
+    owner   => 'root',
+    group   => 'root',
+	mode    => '0644',
+    notify   => Service[$puppet::params::puppet_agent_service_name],
   }
   
+  # Clase con la configuracion del main
+  class { 'puppet::configmain':
+    certname   => $certname,
+    rundir     => $rundir,
+    vardir     => $vardir,
+    ssldir     => $ssldir,
+  }
+ 
+  # Instalacion de puppet agente
+  class {'puppet::agent::install':
+  }
+  
+  # Configuracion de agente
   class {'puppet::agent::config':
     masterserver   => $masterserver,
 	report         => $report,
@@ -22,16 +38,11 @@ class puppet::agent (
 	certname       => $certname,
 	environment    => $environment,
 	service_status => $service_status,
-	require        => Class['puppet::agent::install'],
   }
   
+  # Servicio agente
   class {'puppet::agent::service':
     service_status => $service_status,
-	require        => Class['puppet::agent::config'],
   }
   
-  anchor {'puppet::agent::end':
-    require        => Class['puppet::agent::service'],
-  }
-
 }

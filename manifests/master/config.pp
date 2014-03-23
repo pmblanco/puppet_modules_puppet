@@ -10,13 +10,10 @@ class puppet::master::config (
   $puppetdb_soft   = undef,
 ){
   
-  include puppet::puppetconf
-  
   concat::fragment { 'puppet_conf_master':
     target  => '/etc/puppet/puppet.conf',
 	content => template("${module_name}/puppet_master.conf.erb"),
 	order   => '30',
-	notify  => Service[$puppet::params::puppet_master_service_name],
   }
  
   # Configuracion del fichero autosign
