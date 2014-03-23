@@ -16,7 +16,7 @@ class puppet::master::config (
 	notify  => Service[$puppet::params::puppet_master_service_name],
   }
  
-  # Configuración del fichero autosign
+  # Configuracion del fichero autosign
   if is_array($autosign) {
     file { 'puppet-autosign-file':
       ensure    => file,
