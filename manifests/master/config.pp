@@ -9,6 +9,14 @@ class puppet::master::config (
   $puppetdb_port   = undef,
   $puppetdb_soft   = undef,
 ){
+
+  # Validamos el valor de $puppetdb_soft, si no es true cualquier otra cosa es false
+  if $puppetdb_soft == 'true' {
+ 	$puppetdb_soft_final = 'false'
+  }
+  else { 
+	$puppetdb_soft_final = 'false'
+  }
   
   concat::fragment { 'puppet_conf_master':
     target  => '/etc/puppet/puppet.conf',
@@ -37,8 +45,7 @@ class puppet::master::config (
 	  owner     => 'root',
 	  group     => 'root',
 	  mode      => 0644,
-	  content   => template("$module_name/puppet_puppetdb.conf.erb"),
-      notify    => Service[$puppet::params::puppet_master_service_name],
+	  content   => "[main]\n  server = ${puppetdb_server}\n  port = ${puppetdb_port}\n  soft_write_failure = $puppetdb_soft_final",
 	} 
   }
   
