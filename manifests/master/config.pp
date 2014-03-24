@@ -1,13 +1,15 @@
 class puppet::master::config (
-  $manifestdir     = undef,
-  $manifest        = undef,
-  $modulepath      = undef,
-  $reports         = undef,
-  $dns_alt_names   = undef,
-  $autosign        = undef,
-  $puppetdb_server = undef,
-  $puppetdb_port   = undef,
-  $puppetdb_soft   = undef,
+  $manifestdir         = undef,
+  $manifest            = undef,
+  $modulepath          = undef,
+  $reports             = undef,
+  $dns_alt_names       = undef,
+  $storeconfigs        = undef,
+  $storeconfig_backend = undef,
+  $autosign            = undef,
+  $puppetdb_server     = undef,
+  $puppetdb_port       = undef,
+  $puppetdb_soft       = undef,
 ){
 
   # Validamos el valor de $puppetdb_soft, si no es true cualquier otra cosa es false
@@ -17,13 +19,13 @@ class puppet::master::config (
   else { 
 	$puppetdb_soft_final = 'false'
   }
-  
+
   concat::fragment { 'puppet_conf_master':
     target  => '/etc/puppet/puppet.conf',
 	content => template("${module_name}/puppet_master.conf.erb"),
 	order   => '30',
   }
- 
+
   # Configuracion del fichero autosign
   if is_array($autosign) {
     file { 'puppet-autosign-file':
@@ -36,7 +38,7 @@ class puppet::master::config (
       notify    => Service[$puppet::params::puppet_master_service_name],
 	}
   }
-  
+
   # Configuracion del fichero para conectar contra puppetdb
   if $puppetdb_server {
     file { 'puppet-puppetdb-file':
