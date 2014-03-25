@@ -5,7 +5,7 @@ class puppet::master::config (
   $reports             = undef,
   $dns_alt_names       = undef,
   $storeconfigs        = undef,
-  $storeconfig_backend = undef,
+  $storeconfigs_backend = undef,
   $autosign            = undef,
   $puppetdb_server     = undef,
   $puppetdb_port       = undef,
