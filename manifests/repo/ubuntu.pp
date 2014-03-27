@@ -12,8 +12,8 @@ class puppet::repo::ubuntu {
   apt::source { 'puppetlabs':
     location   => "$puppet::params::puppet_source_repo_url",
     repos      => "$puppet::params::puppet_source_repos",
-    key        => "$puppet::params::puppet_source_repo_key",
-    key_server => "$puppet::params::puppet_source_repo_key_server",
+    #key        => "$puppet::params::puppet_source_repo_key",
+    #key_server => "$puppet::params::puppet_source_repo_key_server",
   }
 
 }
