@@ -79,6 +79,10 @@ Pedro Miguel Blanco
    
 ## Changelog
 
+### v.0.3. 02/04/2014
+- Se trabaja en la compatibilidad con Centos. Se añade nuevo repo de Centos de puppetlabs
+- Dependencia de la clase puppet::db de la clase puppet::agent. Para que el primero funcione ha de estar declarado el segundo. Esto es debido a que puppetdb necesita de certificados para funcionar y este los coge de los que genera el agente de puppet
+
 ### v.0.2. 28/03/2014
 Instalación de puppetdb y personalizacion en master de puppetdb.
 Cambio en filosofía de instalación de master: siempre se instalará el agent cuando se instala el master y no sepuede definir las dos clases (master y agent) en la misma máquina

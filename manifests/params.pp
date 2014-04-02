@@ -15,6 +15,16 @@ class puppet::params {
   	  $puppet_db_config_jetty_ini    = '/etc/puppetdb/conf.d/jetty.ini'
 	  $puppet_db_service             = 'puppetdb'
 	}
+	
+	'CentOS','RedHat': {
+	  $puppet_master_package         = 'puppet-server'
+	  $puppet_agent_package          = 'puppet'
+	  $puppet_db_package             = 'puppetdb'
+	  $puppet_db_terminus_package    = 'puppetdb-terminus'
+	  $puppet_db_config_database_ini = '/etc/puppetdb/conf.d/database.ini'
+  	  $puppet_db_config_jetty_ini    = '/etc/puppetdb/conf.d/jetty.ini'
+	  $puppet_db_service             = 'puppetdb'	
+	}
 
 	default: {
 	  fail ("$::operatingsystem $::operatingsystemversion is not supported")
