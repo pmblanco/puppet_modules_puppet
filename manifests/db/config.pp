@@ -52,7 +52,9 @@ class puppet::db::config (
 	require   => [
 	  File['puppetdb-ssl-directory'],
 	  Service[$puppet::params::puppet_agent_service_name]
-	]
+	],
+	notify    => Service[$puppet::params::puppet_db_service],
+
   }
   
   file { 'puppetdb-ssl-key-file':
@@ -65,7 +67,8 @@ class puppet::db::config (
 	require   => [
 	  File['puppetdb-ssl-directory'],
 	  Service[$puppet::params::puppet_agent_service_name]
-	]
+	],
+	notify    => Service[$puppet::params::puppet_db_service],
   }
   
   file { 'puppetdb-ssl-ca-file':
@@ -78,7 +81,8 @@ class puppet::db::config (
 	require   => [
 	  File['puppetdb-ssl-directory'],
 	  Service[$puppet::params::puppet_agent_service_name]
-	]
+	],
+	notify    => Service[$puppet::params::puppet_db_service],
   }
 
   file { 'puppetdb-config-jetty-ini':
