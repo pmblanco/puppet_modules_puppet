@@ -79,6 +79,9 @@ Pedro Miguel Blanco
    
 ## Changelog
 
+### v.0.4. 13/11/2014
+- Solventamos un problema de dependencias con puppetdb, con los certificados necesarios para arrancar el servicio. Ahora estos certificados tienen  un notify al servicio puppetdb, por lo que deberán ser copiados antes de arrancar el servicio.
+
 ### v.0.3. 02/04/2014
 - Se trabaja en la compatibilidad con Centos. Se añade nuevo repo de Centos de puppetlabs
 - Dependencia de la clase puppet::db de la clase puppet::agent. Para que el primero funcione ha de estar declarado el segundo. Esto es debido a que puppetdb necesita de certificados para funcionar y este los coge de los que genera el agente de puppet
