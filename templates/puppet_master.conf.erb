@@ -1,11 +1,15 @@
 [master]
-<% if @manifestdir -%>
+<% if @environmentpath -%>
+  environmentpath = <%= @environmentpath -%>
+<% else -%>
+<%   if @manifestdir -%>
   manifestdir   = <%= @manifestdir %>
-<% end -%>
-<% if @manifest -%>
+<%   end -%>
+<%   if @manifest -%>
   manifest      = <%= @manifest %>
-<% end -%>
+<%   end -%>
   modulepath    = <%= @modulepath %>
+<% end -%>
 <% if @reports -%>
   reports       = <%= @reports %>
 <% end -%>
