@@ -13,7 +13,7 @@ El motivo por el que he creado este módulo ha sido el de crearlo lo más sencillo
 
 ## Compatibilidad
 
-* De momento solo es compatible con Ubuntu, pero está preparado para que se pueda usar para más S.O. con pocos cambios.
+* De momento es compatible con Ubuntu y con familia RedHat.
 
 ## Requirimientos
 
@@ -78,6 +78,9 @@ Y al final de la configuracion del master se puede ver el ejemplo de añadir un e
 Pedro Miguel Blanco 
    
 ## Changelog
+
+### v.0.5. 24/04/2015
+- Se añade parámetro environmentpat, para ir tendiendo a quitar la definición de los environments de las vesiones antiguas. En la versión 4 de puppet ya no será posible usar definiciones de environments y habrá que usar un directorio de environments. 
 
 ### v.0.4. 13/11/2014
 - Solventamos un problema de dependencias con puppetdb, con los certificados necesarios para arrancar el servicio. Ahora estos certificados tienen  un notify al servicio puppetdb, por lo que deberán ser copiados antes de arrancar el servicio.
