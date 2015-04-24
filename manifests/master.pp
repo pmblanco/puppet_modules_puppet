@@ -2,6 +2,7 @@ class puppet::master (
   $manifestdir         = undef,
   $manifest            = undef,
   $modulepath          = $puppet::params::puppet_master_modulepath,
+  $environmentpath     = undef,
   $reports             = undef,
   $dns_alt_names       = undef,
   $storeconfigs        = undef,
