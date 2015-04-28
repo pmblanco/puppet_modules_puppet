@@ -21,6 +21,7 @@ class puppet::master (
   $rundir              = undef,
   $vardir              = undef,
   $ssldir              = undef,
+  $hiera_config        = undef,
 ) inherits puppet::params {
 
   # Definimos el fichero de configuracion principal
