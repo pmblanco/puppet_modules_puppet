@@ -5,6 +5,7 @@ class puppet::agent (
   $environment    = undef,
   $certname       = undef,
   $service_status = $puppet::params::puppet_agent_service_status,
+  $service_enable = $puppet::params::puppet_agent_service_enable,
   $certname       = undef,
   $rundir         = undef,
   $vardir         = undef,
@@ -43,6 +44,7 @@ class puppet::agent (
   # Servicio agente
   class {'puppet::agent::service':
     service_status => $service_status,
+    service_enable => $service_enable,
   }
   
 }

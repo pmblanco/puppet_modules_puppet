@@ -2,6 +2,7 @@ class puppet::master (
   $manifestdir         = undef,
   $manifest            = undef,
   $modulepath          = $puppet::params::puppet_master_modulepath,
+  $basemodulepath      = undef,
   $environmentpath     = undef,
   $reports             = undef,
   $dns_alt_names       = undef,
@@ -17,10 +18,13 @@ class puppet::master (
   $environment         = undef,
   $certname            = undef,
   $agent_status        = $puppet::params::puppet_agent_service_status,
+  $agent_enable        = $puppet::params::puppet_agent_service_enable,
   $master_status       = $puppet::params::puppet_master_service_status,
+  $master_enable       = $puppet::params::puppet_master_service_enable,
   $rundir              = undef,
   $vardir              = undef,
   $ssldir              = undef,
+  $hiera_config        = undef,
 ) inherits puppet::params {
 
   # Definimos el fichero de configuracion principal
@@ -65,6 +69,7 @@ class puppet::master (
   # Servicio Master
   class {'puppet::master::service':
     service_status => $master_status,
+    service_enable => $master_enable,
   }
   
   # Instalacion de agente
@@ -84,6 +89,7 @@ class puppet::master (
   # Servicio de agente
   class {'puppet::agent::service':
     service_status => $service_status,
+    service_enable => $service_enable,
   }
 
 }

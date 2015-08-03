@@ -1,24 +1,30 @@
 [master]
 <% if @environmentpath -%>
-  environmentpath = <%= @environmentpath %>
+  environmentpath        = <%= @environmentpath %>
 <% else -%>
 <%   if @manifestdir -%>
-  manifestdir   = <%= @manifestdir %>
+  manifestdir            = <%= @manifestdir %>
 <%   end -%>
 <%   if @manifest -%>
-  manifest      = <%= @manifest %>
+  manifest               = <%= @manifest %>
 <%   end -%>
-  modulepath    = <%= @modulepath %>
+  modulepath             = <%= @modulepath %>
+<% end -%>
+<% if @basemodulepath -%>
+  basemodulepath         = <%= @basemodulepath %>
 <% end -%>
 <% if @reports -%>
-  reports       = <%= @reports %>
+  reports                = <%= @reports %>
 <% end -%>
 <% if @dns_alt_names -%>
-  dns_alt_names = <%= @dns_alt_names %>
+  dns_alt_names          = <%= @dns_alt_names %>
 <% end -%>
 <% if @storeconfigs -%>
-  storeconfigs   = <%= @storeconfigs %>
+  storeconfigs           = <%= @storeconfigs %>
 <% end -%>
 <% if @storeconfigs_backend -%>
   storeconfigs_backend   = <%= @storeconfigs_backend %>
+<% end -%>
+<% if @hiera_config -%>
+  hiera_config           = <%= @hiera_config %>
 <% end -%>

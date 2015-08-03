@@ -2,7 +2,7 @@ class puppet::params {
 
   case $::operatingsystem {
 
-    'Ubuntu': {
+    'Ubuntu','Debian': {
 	  $puppet_source_repo_url        = 'http://apt.puppetlabs.com'
 	  $puppet_source_repo_key        = '4BD6EC30'
 	  $puppet_source_repo_key_server = 'pgp.mit.edu'
@@ -36,10 +36,12 @@ class puppet::params {
   $puppet_master_modulepath        = '/etc/puppet/modules:/usr/share/puppet/modules'
   $puppet_master_service_name      = 'puppetmaster'
   $puppet_master_service_status    = 'running'
+  $puppet_master_service_enable    = true
   
   # Configuraciones de puppet agent
   $puppet_agent_service_name       = 'puppet'
   $puppet_agent_service_status     = 'running'
+  $puppet_agent_service_enable     = false
   
   # Configuraciones de puppetdb
   $puppet_db_protocol              = 'hsqldb'
