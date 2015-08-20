@@ -33,7 +33,7 @@ class puppet::master::config (
 	  path      => '/etc/puppet/autosign.conf',
 	  owner     => 'root',
 	  group     => 'root',
-	  mode      => 0644,
+	  mode      => '0644',
 	  content   => join($autosign,"\n"),
       notify    => Service[$puppet::params::puppet_master_service_name],
 	}
@@ -46,7 +46,7 @@ class puppet::master::config (
 	  path      => '/etc/puppet/puppetdb.conf',
 	  owner     => 'root',
 	  group     => 'root',
-	  mode      => 0644,
+	  mode      => '0644',
 	  content   => "[main]\n  server = ${puppetdb_server}\n  port = ${puppetdb_port}\n  soft_write_failure = $puppetdb_soft_final",
 	} 
   }
