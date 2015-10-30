@@ -84,6 +84,10 @@ Pedro Miguel Blanco
    
 ## Changelog
 
+### v.0.7. 30/10/2015
+
+- Suporte para EL7 en la configuracion de Repos
+
 ### v.0.6. 03/08/2015
 
 - Nuevo parámetro hiera_config en el master, para poder personalizar ubicación de hiera
