@@ -4,6 +4,7 @@ class puppet::master (
   $modulepath          = $puppet::params::puppet_master_modulepath,
   $basemodulepath      = undef,
   $environmentpath     = undef,
+  $default_manifest    = undef,
   $reports             = undef,
   $dns_alt_names       = undef,
   $storeconfigs        = undef,
@@ -54,16 +55,16 @@ class puppet::master (
   # Configuracion de Master
   class {'puppet::master::config':
     manifestdir          => $manifestdir,
-	manifest             => $manifest,
+	  manifest             => $manifest,
     modulepath           => $modulepath,
-	reports              => $reports,
+	  reports              => $reports,
     storeconfigs         => $storeconfigs,
     storeconfigs_backend  => $storeconfigs_backend,	
-	dns_alt_names        => $dns_alt_names,
-	autosign             => $autosign,
-	puppetdb_server      => $puppetdb_server,
-	puppetdb_port        => $puppetdb_port,
-	puppetdb_soft        => $puppetdb_soft,
+	  dns_alt_names        => $dns_alt_names,
+	  autosign             => $autosign,
+	  puppetdb_server      => $puppetdb_server,
+	  puppetdb_port        => $puppetdb_port,
+	  puppetdb_soft        => $puppetdb_soft,
   }
 
   # Servicio Master
